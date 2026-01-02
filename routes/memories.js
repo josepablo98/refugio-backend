@@ -4,7 +4,7 @@ import {
   addMemory,
   updateMemory,
   deleteMemory,
-} from "../controllers/controller.js";
+} from "../controllers/memories.js";
 
 const router = express.Router();
 

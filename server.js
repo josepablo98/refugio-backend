@@ -3,7 +3,8 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { connectDB } from "./config/db.js";
-import memoriesRoutes from "./routes/routes.js";
+import memoriesRoutes from "./routes/memories.js";
+import challengesRoutes from "./routes/challenges.js";
 
 dotenv.config();
 
@@ -16,10 +17,16 @@ connectDB();
 
 // Rutas
 app.use("/api/memories", memoriesRoutes);
+app.use("/api/challenges", challengesRoutes);
 
-app.get("/", (req, res) => {
-  res.send("Servidor del Refugio funcionando 💖");
-});
+const PORT = 8080;
+// app.get("/", (req, res) => {
+//   res.send("Servidor del Refugio funcionando 💖");
+// });
+
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
+})
 
 // exporta la app para usar en serverless
 export default app;
